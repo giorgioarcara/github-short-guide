@@ -1,0 +1,169 @@
+\documentclass[12pt]{article}
+\usepackage[scaled=0.8]{helvet}
+
+
+
+%% THIS SECTION IS THE PREAMBLE
+\usepackage{graphicx}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{float} % per forzare la posizione di una figura tramite il parametro [h]
+\usepackage[formats]{listings}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\usepackage{fancyvrb} % to include nice tilde in formulas.
+\usepackage{blindtext}
+%\usepackage{kpfonts}
+\usepackage{fancyvrb}
+\setcounter{tocdepth}{2}
+\usepackage{soul} % to underline and new verse
+\usepackage{lscape}
+\usepackage{adjustbox}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{booktabs} % Required for better horizontal rules in tables
+
+
+
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{SupplBiblio.bib}
+
+
+
+
+\lstdefineformat{R}{~=\( \sim \)}
+\lstset{basicstyle=\ttfamily, format=R}
+
+
+
+\newcommand{\mybox}[1]{% if you put [2] before this  bracket, the command will expect another argument
+         %\begin{center}%
+
+\noindent
+            \begin{tikzpicture}%
+                \node[rectangle, draw=gray, fill = gray!10 , rounded corners=3pt, inner xsep=10pt, inner ysep=6pt, outer ysep=10pt]{
+                \begin{minipage}{0.90\linewidth}#1\end{minipage}};% notice, instead of gray, you can put #2 if a second argument is expected in the command
+            \end{tikzpicture}%
+         %\end{center}%
+}
+
+
+\newcommand{\Hint}[1]{%
+         %\begin{center}%
+\noindent
+            \begin{tikzpicture}%
+                \node[rectangle, draw=black, rounded corners=3pt, inner xsep=10pt, inner ysep=6pt, outer ysep=10pt]{
+                \begin{minipage}{\linewidth}#1\end{minipage}};%
+            \end{tikzpicture}%
+         %\end{center}%
+}
+
+\newcommand{\mytilde}{$\sim$}
+
+%\begin{document}
+%\blindtext
+%\mybox{\blindtext}{green}
+%\blindtext
+%\mybox{\blindtext}{red}
+%\end{document}
+
+
+
+
+% \setcounter{secnumdepth}{0}
+% The command above change the numbering showed. With 0, only Chapter numbering is showed, with -1. No numbering is showed
+
+%\pgfmathtruncatemacro\distance{1}
+
+%\titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it}
+%\setcounter{secnumdepth}{0} % this option removes numbers from TOC
+% be careful to the above command!! hyperref won't work if you use it.
+\setlength{\abovecaptionskip}{25pt plus 3pt minus 2pt} % parametro per distanza caption figure
+
+\newcommand{\code}[1]{\texttt{#1}} 
+\newcommand{\erpR}{\texttt{erpR }} 
+\newcommand{\R}{\texttt{R }} 
+\newcommand{\oq}{``} 
+\newcommand{\cq}{''} 
+\newcommand{\MATLAB}{MATLAB\textsuperscript{\texttrademark}}
+
+\newcommand{\bab}[1]{\textbf{\Large #1}}
+\begin{document}
+  \begin{titlepage}
+    \vspace*{\fill}
+\begin{center}
+
+\begin{figure}
+\includegraphics[scale=0.6]{Figures/ONDA_logo_v12.png}
+\end{figure}
+%\vspace*{1\baselineskip}
+      {\Large \textbf{Github Short Guide}}\\
+      \vspace*{0.5\baselineskip}
+{\normalsize     \textbf{O}pen methodologies for \textbf{N}eurorehabilitation and \textbf{D}ata \textbf{A}nalysis}
+\\
+\vspace*{1\baselineskip}
+      \normalsize{Giorgio Arcara}\\
+\vspace*{3\baselineskip}
+{\normalsize version 0.1}\\
+\vspace*{1\baselineskip}
+ \today
+    \end{center}
+    \vspace*{\fill}
+  \end{titlepage}
+
+
+% AFFILIATIONS
+%%\vspace*{2\baselineskip}
+%%	\emph{\textsuperscript{1}I.R.C.C.S. Fondazione Ospedale San Camillo, Venice Italy}\\
+%%	\emph{\textsuperscript{2} Department of General Psychology, Padua, Italy}
+%    \end{center}
+
+%    \vspace*{\fill}
+%\newpage
+
+
+\tableofcontents
+\newpage
+
+
+\cleardoublepage
+\phantomsection
+%\addcontentsline{toc}{section}{Introduction}
+\section{What This Manual Is For}
+This manual serves as a short guide on Github.
+
+\subsection{The Github Philosophy (in a nutshell)}
+
+
+\section{Start to work with github}
+\subsection{Set up a Github repository}
+\subsection{First commit}
+\subsection{Further commits}
+\subsection{Create a branch}
+\subsection{Working with branches}
+\subsection{Merging a branch - Pull requests}
+
+
+\section{Collaborate with Github}
+\subsection{Fork a project}
+\subsection{life of a branch}
+\subsection{be updated witht the main project}
+\begin{verbatim}
+git switch main
+git fetch upstream
+git log origin/main..upstream/main --oneline
+git pull upstream main
+\end{verbatim}
+
+\section{Common Issues}
+\subsection{abort a commit}
+\subsection{go back to a previous version}
+
+
+
+\end{document}
+
+  

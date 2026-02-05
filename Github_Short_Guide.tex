@@ -2,6 +2,8 @@
 \usepackage[scaled=0.8]{helvet}
 
 
+%% RENDER WITH PDFLATEX!
+
 
 %% THIS SECTION IS THE PREAMBLE
 \usepackage{graphicx}
@@ -150,12 +152,37 @@ This manual serves as a short guide on Github.
 \section{Collaborate with Github}
 \subsection{Fork a project}
 \subsection{life of a branch}
+\begin{verbatim}
+git branch -d my-temp-branch #delete locally branch named my-temp-branch
+git push origin --delete my-temp-branch  #delete online branch named my-temp-branch
+\end{verbatim}
+ 
 \subsection{be updated witht the main project}
 \begin{verbatim}
+\emph{if it is not a fork}
+git switch main
+git pull
+\emph{If it is a fork}
 git switch main
 git fetch upstream
-git log origin/main..upstream/main --oneline
-git pull upstream main
+git log origin/main..upstream/main --oneline  # (optional: review changes)
+git merge --ff-only upstream/main  # fails if you've diverged
+# OR
+git reset --hard upstream/main  # force sync (discards any local commits on main)
+git push origin main
+\end{verbatim}
+
+\subsection{Cleaning}
+delete local branch (typically after merge)
+\begin{verbatim}
+git branch -d branchname
+git branch -D branchname #(force deleting)
+\end{verbatim}
+
+delete remote branch
+
+\begin{verbatim}
+git push origin --delete branch name
 \end{verbatim}
 
 \section{Common Issues}

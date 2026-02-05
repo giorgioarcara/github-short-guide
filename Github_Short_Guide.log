@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.3)  19 SEP 2025 22:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.3)  5 FEB 2026 07:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1120,24 +1120,24 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 (./Github_Short_Guide.aux)
 \openout1 = `Github_Short_Guide.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
 
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1161,7 +1161,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 94.
+Package hyperref Info: Link coloring OFF on input line 96.
 
 (./Github_Short_Guide.out) (./Github_Short_Guide.out)
 \@outlinefile=\write6
@@ -1208,12 +1208,12 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Github_Short_Guide.bbl' not found.
 
 No file Github_Short_Guide.bbl.
-Package biblatex Info: Reference section=0 on input line 94.
-Package biblatex Info: Reference segment=0 on input line 94.
-<Figures/ONDA_logo_v12.png, id=71, 590.205pt x 244.66406pt>
+Package biblatex Info: Reference section=0 on input line 96.
+Package biblatex Info: Reference segment=0 on input line 96.
+<Figures/ONDA_logo_v12.png, id=75, 590.205pt x 244.66406pt>
 File: Figures/ONDA_logo_v12.png Graphic file (type png)
 <use Figures/ONDA_logo_v12.png>
-Package pdftex.def Info: Figures/ONDA_logo_v12.png  used on input line 100.
+Package pdftex.def Info: Figures/ONDA_logo_v12.png  used on input line 102.
 (pdftex.def)             Requested size: 354.12573pt x 146.79956pt.
 [1
 
@@ -1227,37 +1227,55 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.129 \newpage
-               [1] [2
+l.131 \newpage
+               [1]
+Overfull \hbox (54.60022pt too wide) in paragraph at lines 158--158
+[]\OT1/cmtt/m/n/12 git branch -d my-temp-branch #delete locally branch named my
+-temp-branch[] 
+ []
 
-] [3] (./Github_Short_Guide.aux)
 
-Package rerunfilecheck Warning: File `Github_Short_Guide.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+Overfull \hbox (122.52525pt too wide) in paragraph at lines 158--158
+[]\OT1/cmtt/m/n/12 git push origin --delete my-temp-branch  #delete online bran
+ch named my-temp-branch[] 
+ []
 
-Package rerunfilecheck Info: Checksums for `Github_Short_Guide.out':
-(rerunfilecheck)             Before: 94A6BA5577869D61000334EA0F7DCA97;2753
-(rerunfilecheck)             After:  718510CCE25DF558CD97C2D29C760A80;2753.
+
+Overfull \hbox (66.95023pt too wide) in paragraph at lines 173--173
+[]\OT1/cmtt/m/n/12 git log origin/main..upstream/main --oneline  # (optional: r
+eview changes)[] 
+ []
+
+[2
+
+]
+Overfull \hbox (110.17525pt too wide) in paragraph at lines 173--173
+[]\OT1/cmtt/m/n/12 git reset --hard upstream/main  # force sync (discards any l
+ocal commits on main)[] 
+ []
+
+[3] (./Github_Short_Guide.aux)
+Package rerunfilecheck Info: File `Github_Short_Guide.out' has not changed.
+(rerunfilecheck)             Checksum: 8AB963E978B381B4103379FC1869FAAB;2851.
 Package logreq Info: Writing requests to 'Github_Short_Guide.run.xml'.
 \openout1 = `Github_Short_Guide.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34826 strings out of 476025
- 681805 string characters out of 5790018
- 1857388 words of memory out of 5000000
- 54740 multiletter control sequences out of 15000+600000
+ 34828 strings out of 476025
+ 681835 string characters out of 5790018
+ 1858388 words of memory out of 5000000
+ 54741 multiletter control sequences out of 15000+600000
  517697 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,7n,102p,691b,5177s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
 /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Github_Short_Guide.pdf (4 pages, 79575 bytes).
+Output written on Github_Short_Guide.pdf (4 pages, 82323 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 138 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 

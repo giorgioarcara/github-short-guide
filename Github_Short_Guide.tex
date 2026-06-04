@@ -85,11 +85,11 @@
 % be careful to the above command!! hyperref won't work if you use it.
 \setlength{\abovecaptionskip}{25pt plus 3pt minus 2pt} % parametro per distanza caption figure
 
-\newcommand{\code}[1]{\texttt{#1}} 
-\newcommand{\erpR}{\texttt{erpR }} 
-\newcommand{\R}{\texttt{R }} 
-\newcommand{\oq}{``} 
-\newcommand{\cq}{''} 
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\erpR}{\texttt{erpR }}
+\newcommand{\R}{\texttt{R }}
+\newcommand{\oq}{``}
+\newcommand{\cq}{''}
 \newcommand{\MATLAB}{MATLAB\textsuperscript{\texttrademark}}
 
 \newcommand{\bab}[1]{\textbf{\Large #1}}
@@ -139,61 +139,302 @@ This manual serves as a short guide on Github.
 
 \subsection{The Github Philosophy (in a nutshell)}
 
+GitHub is a platform for \emph{version control} and collaboration built on top of \emph{Git}. The core idea is simple: instead of saving files by overwriting them, you record a history of changes. This lets you:
+
+\begin{itemize}
+  \item Go back to any previous version of your work.
+  \item See exactly what changed, and when.
+  \item Work on the same project with other people without overwriting each other's work.
+\end{itemize}
+
+The key distinction is between \textbf{local} and \textbf{remote}. Your local copy lives on your computer; the remote copy lives on GitHub's servers. You make changes locally, then \emph{push} them to the remote so others can see them. You \emph{pull} (or \emph{fetch}) to download changes that others have pushed.
+
+\mybox{\textbf{Git vs.\ GitHub:} Git is the version-control software that runs on your computer. GitHub is a website that hosts Git repositories and adds collaboration features (pull requests, issues, etc.). You can use Git without GitHub, but not the other way around.}
+
 
 \section{Start to work with github}
+
 \subsection{Set up a Github repository}
+
+Before using Git, configure your identity once on your machine:
+
+\begin{verbatim}
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+\end{verbatim}
+
+To create a new repository:
+\begin{enumerate}
+  \item Go to \href{https://github.com}{github.com} and click \textbf{New repository}.
+  \item Give it a name. Check \textbf{Add a README file} and \textbf{Add .gitignore} (choose the template that matches your project, e.g.\ Python, R). Then click \textbf{Create repository}.
+  \item Copy the repository URL (e.g.\ \texttt{https://github.com/yourname/your-repo.git}).
+  \item Clone it to your computer:
+\end{enumerate}
+
+\begin{verbatim}
+git clone https://github.com/yourname/your-repo.git
+cd your-repo
+\end{verbatim}
+
+This creates a local folder connected to the remote repository.
+\vspace{1em}
+\mybox{\textbf{README.md} is the first thing visitors see on your repository page. Write a brief description of what the project is and how to use it. GitHub renders it automatically as formatted text.}
+\vspace{1em}
+\mybox{\textbf{.gitignore} tells Git which files to ignore --- for example, compiled files, temporary files, or sensitive data. A file listed in \texttt{.gitignore} will never be accidentally committed. GitHub offers ready-made templates for common languages and tools. You can also add entries manually, one pattern per line:}
+
+\begin{verbatim}
+*.log          # ignore all log files
+data/raw/      # ignore a whole folder
+secrets.txt    # ignore a specific file
+\end{verbatim}
+
+\mybox{\textbf{Cloning someone else's repo:} You can clone any public repository the same way --- just use its URL. If you don't have write access you can read and experiment locally, but you won't be able to push. To contribute, fork it first (see Section~\ref{sec:fork}).}
+
 \subsection{First commit}
+
+A \emph{commit} is a snapshot of your files at a point in time. The workflow is always: \textbf{edit} $\to$ \textbf{stage} $\to$ \textbf{commit} $\to$ \textbf{push}.
+
+\begin{verbatim}
+git status                   # see what has changed
+git add filename.txt         # stage a specific file
+
+git commit -m "first commit: added readme"
+git push                     # upload to GitHub
+\end{verbatim}
+
+\mybox{\textbf{Write meaningful commit messages.} A message like \texttt{"add baseline correction to preprocessing script"} is far more useful than \texttt{"changes"} when you look at the history months later.}
+\vspace{1em}
+\mybox{\textbf{Avoid adding all files} you may be tempted to use \texttt{git add .} to stage all changed files but this is a bad habit. You need to know what changes you are staging, and separate, if useful and clearer into separate commits}
+
+
 \subsection{Further commits}
+
+The cycle is always the same: edit files, stage, commit, push.
+
+\begin{verbatim}
+git status                      # always start here
+git add myfile1.txt             # or 
+git add myfile1.md myfile2.md   # or 
+git add folder_with_files/
+git commit -m "describe what changed"
+git push
+\end{verbatim}
+
+To review your commit history:
+
+\begin{verbatim}
+git log --oneline
+\end{verbatim}
+
 \subsection{Create a branch}
+
+A \emph{branch} is an independent line of development. It lets you work on a new feature or experiment without touching the main version of the project.
+
+\begin{verbatim}
+git switch -c my-branch      # create and switch in one step
+\end{verbatim}
+
+Or in two steps:
+
+\begin{verbatim}
+git branch my-branch         # create
+git switch my-branch         # move to it
+\end{verbatim}
+
+To list all branches (the current one is marked with \texttt{*}):
+
+\begin{verbatim}
+git branch
+\end{verbatim}
+
 \subsection{Working with branches}
+
+Once on a branch, the usual commit cycle applies. Your changes stay isolated on this branch until you merge them.
+
+\begin{verbatim}
+git status
+git add .
+git commit -m "work on my-branch"
+git push origin my-branch    # push this branch to GitHub
+\end{verbatim}
+
+To go back to the main branch at any time:
+
+\begin{verbatim}
+git switch main
+\end{verbatim}
+
+\mybox{\textbf{Stashing uncommitted work:} If you need to switch branch but have uncommitted changes you are not ready to commit, use \texttt{git stash} to set them aside temporarily. Run \texttt{git stash pop} to restore them when you come back.}
+
 \subsection{Merging a branch - Pull requests}
+
+A \emph{pull request} (PR) is a request to merge your branch into the main branch. It is the standard way to propose changes, especially in collaborative projects.
+
+\begin{enumerate}
+  \item Push your branch to GitHub: \texttt{git push origin my-branch}
+  \item On GitHub, click \textbf{Compare \& pull request}.
+  \item Add a title and description, then click \textbf{Create pull request}.
+  \item Once approved (or if working alone), click \textbf{Merge pull request}.
+\end{enumerate}
+
+After merging, update your local main branch and delete the feature branch:
+
+\begin{verbatim}
+git switch main
+git pull
+git branch -d my-branch      # delete the branch locally
+\end{verbatim}
 
 
 \section{Collaborate with Github}
+
 \subsection{Fork a project}
-\subsection{life of a branch}
+\label{sec:fork}
+
+A \emph{fork} is your personal copy of someone else's repository on GitHub. Use it when you want to contribute to a project you do not have write access to.
+
+\begin{enumerate}
+  \item Click \textbf{Fork} on the GitHub page of the original repository.
+  \item Clone your fork locally:
+\end{enumerate}
+
 \begin{verbatim}
-git branch -d my-temp-branch #delete locally branch named my-temp-branch
-git push origin --delete my-temp-branch  #delete online branch named my-temp-branch
+git clone https://github.com/yourname/forked-repo.git
+cd forked-repo
 \end{verbatim}
- 
-\subsection{be updated witht the main project}
+
+Add a reference to the original repository (called \emph{upstream}) so you can pull in future updates:
+
 \begin{verbatim}
-\emph{if it is not a fork}
+git remote add upstream https://github.com/originalowner/repo.git
+\end{verbatim}
+
+Verify your remotes:
+
+\begin{verbatim}
+git remote -v
+\end{verbatim}
+
+You should see \texttt{origin} pointing to your fork and \texttt{upstream} pointing to the original.
+
+\subsection{Life of a branch}
+
+The typical lifecycle of a branch is: \textbf{create} $\to$ \textbf{commit} $\to$ \textbf{push} $\to$ \textbf{open PR} $\to$ \textbf{merge} $\to$ \textbf{delete}. Once merged, the branch is no longer needed and should be deleted to keep the repository tidy.
+
+Delete a branch locally and on the remote:
+
+\begin{verbatim}
+git branch -d my-temp-branch           # delete locally
+git push origin --delete my-temp-branch  # delete on GitHub
+\end{verbatim}
+
+\subsection{Be updated with the main project}
+
+Keep your local copy in sync with the remote before starting new work, especially in collaborative projects.
+
+\emph{If it is not a fork:}
+\begin{verbatim}
 git switch main
 git pull
-\emph{If it is a fork}
+\end{verbatim}
+
+\emph{If it is a fork, you need to pull from upstream first:}
+\begin{verbatim}
+# UPDATE (without review)
+git switch main
+git pull upstream main # to fetch updates and merge upstream changes
+git push origin main   # to update your fork on GitHub
+
+# ALTERNATIVE (review before merging)
 git switch main
 git fetch upstream
-git log origin/main..upstream/main --oneline  # (optional: review changes)
-git merge --ff-only upstream/main  # fails if you've diverged
-# OR
-git reset --hard upstream/main  # force sync (discards any local commits on main)
+git log HEAD..upstream/main --oneline   # review incoming commits
+git merge --ff-only upstream/main       # merge only if clean fast-forward
 git push origin main
+
 \end{verbatim}
+
+\mybox{\textbf{Do this regularly.} Staying in sync with the main project avoids large, hard-to-resolve conflicts later.}
 
 \subsection{Cleaning}
-delete local branch (typically after merge)
+
+Delete a local branch (typically after it has been merged):
+
 \begin{verbatim}
 git branch -d branchname
-git branch -D branchname #(force deleting)
+git branch -D branchname     # force delete (even if not merged)
 \end{verbatim}
 
-delete a remote branch
+Delete a remote branch:
 
 \begin{verbatim}
-git push origin --delete branch name
+git push origin --delete branchname
 \end{verbatim}
 
 \section{Common Issues}
-\subsection{abort a commit}
-\subsection{go back to a previous version}
+
+\subsection{Abort a commit}
+
+If you have staged files but have \textbf{not yet committed}, you can unstage them (your edits are kept):
+
+\begin{verbatim}
+git restore --staged .       # unstage everything
+git restore --staged file.txt  # unstage a specific file
+\end{verbatim}
+
+If you have already committed but \textbf{not yet pushed}, you can undo the last commit while keeping your changes:
+
+\begin{verbatim}
+git reset HEAD~1
+\end{verbatim}
+
+To undo the last commit \emph{and} discard all changes:
+
+\begin{verbatim}
+git reset --hard HEAD~1
+\end{verbatim}
+
+\mybox{\textbf{Warning:} Avoid \texttt{git reset --hard} if you have already pushed the commit to GitHub. It rewrites history and will cause problems for anyone who has pulled that commit.}
+
+\subsection{Go back to a previous version}
+
+First, find the commit you want to go back to:
+
+\begin{verbatim}
+git log --oneline
+\end{verbatim}
+
+\textbf{Inspect} a previous version without changing anything (you can look around and then come back):
+
+\begin{verbatim}
+git checkout abc1234         # replace with the commit hash
+git switch main              # come back to main
+\end{verbatim}
+
+\textbf{Revert} a specific commit safely (creates a new commit that undoes it --- safe to use even after pushing):
+
+\begin{verbatim}
+git revert abc1234
+\end{verbatim}
+
+\textbf{Reset} your branch to a previous commit (destructive --- rewrites history, use only on commits that have not been pushed):
+
+\begin{verbatim}
+git reset --hard abc1234
+\end{verbatim}
 
 \section{Tokens}
-go to github. On the left, select settings.
-Generate a fine-grained token, with: all repositories, add permission type: content.
+
+GitHub requires a \emph{personal access token} instead of a password for command-line operations.
+
+Go to GitHub. On the top-right, click your profile icon and select \textbf{Settings}. Scroll down and click \textbf{Developer settings} $\to$ \textbf{Personal access tokens} $\to$ \textbf{Fine-grained tokens}.
+
+Generate a fine-grained token with: all repositories, permission type: \textbf{Contents} (read and write).
+
+Copy the token immediately --- GitHub will not show it again. Use it as your password when Git asks for credentials.
+\vspace{1em}
+
+\mybox{\textbf{Storing the token:} To avoid retyping it every time, run \texttt{git config --global credential.helper store} once. The next time you enter the token, Git will save it.}
 
 
 \end{document}
-
-  
